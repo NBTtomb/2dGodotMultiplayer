@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://3t4lbq1jc032"]
+
+[ext_resource type="Script" path="res://levels/menu.gd" id="1_ojq7w"]
+[ext_resource type="Texture2D" uid="uid://bja0wl8tcw71c" path="res://art/backgrounds/background_01.png" id="2_3qcpa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0x4j5"]
+font_size = 76
+font_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+outline_size = 8
+outline_color = Color(0.968627, 0.996078, 0.976471, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ojq7w")
+
+[node name="MenuBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3qcpa")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 720.0
+offset_bottom = 60.0
+
+[node name="HostButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host "
+
+[node name="JoinButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join Game
+"
+
+[node name="StartButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start Game"
+
+[node name="AddIP" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "Add IP Address"
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Connecting..."
+label_settings = SubResource("LabelSettings_0x4j5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
